@@ -1,13 +1,27 @@
 import { Button, Group, Modal } from "@mantine/core";
 import { useAuth } from "../../../../utils/AuthContext/AuthContext";
+import { notifications } from "@mantine/notifications";
 
 interface LogoutModalProps {
-  opened: any;
-  close: any;
+  opened: boolean;
+  close: () => void;
 }
 
 const LogoutModal = ({ opened, close }: LogoutModalProps) => {
   const { logout } = useAuth();
+
+  const handleLogout = () => {
+    notifications.show({
+      message: "Logout Successfull",
+      autoClose: 2000,
+      withCloseButton: false,
+      withBorder: true,
+      color: "teal",
+      radius: "sm",
+    });
+    logout();
+    close();
+  };
   return (
     <Modal
       opened={opened}
@@ -28,8 +42,7 @@ const LogoutModal = ({ opened, close }: LogoutModalProps) => {
           variant="outline"
           color="red"
           onClick={() => {
-            logout();
-            close();
+            handleLogout();
           }}
         >
           Logout

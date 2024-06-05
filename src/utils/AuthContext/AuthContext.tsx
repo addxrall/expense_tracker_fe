@@ -15,8 +15,6 @@ import {
   useRegisterMutation,
 } from "../../api/mutations";
 import { useIsCookiePresent } from "../../api/queries";
-import { notifications } from "@mantine/notifications";
-
 interface AuthContextProps {
   authenticated: boolean;
   login: (params: LoginInput) => Promise<void>;
@@ -100,14 +98,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
       await logoutMutation();
       setAuthenticated(false);
       navigate("/");
-      notifications.show({
-        message: "Logout Successfull",
-        autoClose: 2000,
-        withCloseButton: false,
-        withBorder: true,
-        color: "teal",
-        radius: "lg",
-      });
     } catch (err: any) {
       setError(err);
     }
