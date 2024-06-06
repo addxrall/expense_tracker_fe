@@ -63,7 +63,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
 
         if (response.data?.loginUser.userId) {
           setAuthenticated(true);
-          navigate(mainLocation);
           navigate(mainLocation, { replace: true });
         }
         setLoading(false);
@@ -81,9 +80,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
           variables: { registerUserInput: params },
         });
 
-        if (response.data?.registerUser.userId) {
+        if (response.data) {
           setAuthenticated(true);
-          navigate(mainLocation);
           navigate(mainLocation, { replace: true });
         }
       } catch (err: any) {
@@ -127,7 +125,7 @@ export const useAuth = (): AuthContextProps => {
     throw new Error("useAuth must be used within an AuthProvider");
   }
 
-  if (context.authenticated === null && !context.loading) {
+  if (!context.authenticated && !context.loading) {
     navigate("/login");
   }
 
