@@ -1,5 +1,8 @@
 import { gql, useMutation } from "@apollo/client";
-import { ID } from "../interfaces";
+import {
+  RemoveUserAccountMutation,
+  RemoveUserAccountMutationVariables,
+} from "../interfaces";
 
 export const REMOVE_USER_ACCOUNT = gql`
   mutation RemoveUserAccount($userId: Int!) {
@@ -8,16 +11,6 @@ export const REMOVE_USER_ACCOUNT = gql`
     }
   }
 `;
-
-interface RemoveUserAccountMutation {
-  removeUserAccount: {
-    message: string;
-  };
-}
-
-interface RemoveUserAccountMutationVariables {
-  userId: ID;
-}
 
 export const useRemoveUserAccount = () =>
   useMutation<RemoveUserAccountMutation, RemoveUserAccountMutationVariables>(

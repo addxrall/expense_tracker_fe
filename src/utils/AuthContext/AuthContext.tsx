@@ -6,7 +6,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { ApolloError } from "@apollo/client";
+import { ApolloError, useApolloClient } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import { RegisterInput, LoginInput } from "../../api/interfaces";
 import {
@@ -35,6 +35,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
 }: any) => {
   const navigate = useNavigate();
   const mainLocation = "/dashboard";
+  const client = useApolloClient();
 
   const [error, setError] = useState<ApolloError | null | undefined>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -94,6 +95,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
   const logout = useCallback(async () => {
     try {
       await logoutMutation();
+      client.clearStore();
       setAuthenticated(false);
       navigate("/");
     } catch (err: any) {

@@ -1,5 +1,10 @@
 import { gql, useMutation } from "@apollo/client";
-import { ID, LoginInput, RegisterInput } from "../interfaces";
+import {
+  LoginUserMutation,
+  LoginUserMutationVariables,
+  RegisterUserMutation,
+  RegisterUserMutationVariables,
+} from "../interfaces";
 
 export const LOGIN_USER = gql`
   mutation Mutation($loginUserInput: LoginUserInput) {
@@ -26,31 +31,10 @@ export const REGISTER_USER = gql`
   }
 `;
 
-interface RegisterUserMutation {
-  registerUser: {
-    userId: ID;
-  };
-}
-
-interface RegisterUserMutationVariables {
-  registerUserInput: RegisterInput;
-}
-
 export const useRegisterMutation = () =>
   useMutation<RegisterUserMutation, RegisterUserMutationVariables>(
     REGISTER_USER
   );
-
-interface LoginUserMutation {
-  loginUser: {
-    message: string;
-    userId: string;
-  };
-}
-
-interface LoginUserMutationVariables {
-  loginUserInput: LoginInput;
-}
 
 export const useLoginMutation = () =>
   useMutation<LoginUserMutation, LoginUserMutationVariables>(LOGIN_USER);

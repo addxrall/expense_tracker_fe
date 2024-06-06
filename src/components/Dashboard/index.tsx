@@ -1,5 +1,7 @@
+import { Container } from "@mantine/core";
+
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return <Container fluid>Dashboard</Container>;
 };
 
 export default Dashboard;

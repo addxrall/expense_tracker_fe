@@ -1,5 +1,10 @@
 import { gql, useQuery } from "@apollo/client";
-import { ID } from "../interfaces";
+import {
+  GetCurrentUserQuery,
+  GetUserByIdQuery,
+  GetUserByIdVariables,
+  ID,
+} from "../interfaces";
 
 const GET_USER_BY_ID = gql`
   query Query($userId: Int!) {
@@ -20,29 +25,18 @@ const GET_CURRENT_USER = gql`
   }
 `;
 
-interface GetUserByIdQuery {
-  user: {
-    email: string;
-    username: string;
-  };
-}
-
-interface GetUserByIdVariables {
-  userId: ID;
-}
-
 export const useGetUserById = (userId: ID) =>
   useQuery<GetUserByIdQuery, GetUserByIdVariables>(GET_USER_BY_ID, {
     variables: { userId },
   });
 
-interface GetCurrentUserQuery {
-  currentUser: {
-    email?: string;
-    username?: string;
-    userId?: ID;
-  };
-}
+export const useGetCurrentUser = () => {
+  const { data, loading, error } =
+    useQuery<GetCurrentUserQuery>(GET_CURRENT_USER);
 
-export const useGetCurrentUser = () =>
-  useQuery<GetCurrentUserQuery>(GET_CURRENT_USER);
+  const email = data?.currentUser?.email;
+  const username = data?.currentUser?.username;
+  const userId = data?.currentUser?.userId;
+
+  return { data, loading, error, email, username, userId };
+};
