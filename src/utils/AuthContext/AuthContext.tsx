@@ -125,7 +125,7 @@ export const useAuth = (): AuthContextProps => {
     throw new Error("useAuth must be used within an AuthProvider");
   }
 
-  if (!context.authenticated && !context.loading) {
+  if (context.authenticated === null && !context.loading) {
     navigate("/login");
   }
 
