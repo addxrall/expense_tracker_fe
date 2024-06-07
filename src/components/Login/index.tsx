@@ -35,17 +35,16 @@ export function Login() {
 
   return (
     <Container size={420} my={40}>
-      <h1 className={classes.title}>
-        <Text
-          component="span"
-          variant="gradient"
-          gradient={{ from: "teal", to: "cyan" }}
-          inherit
-          ta="center"
-        >
-          Expense Guardian
-        </Text>
-      </h1>
+      <Text
+        component="h1"
+        variant="gradient"
+        gradient={{ from: "teal", to: "cyan" }}
+        ta="center"
+        fz={50}
+        fw={900}
+      >
+        Expense Guardian
+      </Text>
       <Title order={2} className={classes.title} ta="center" mt="md" mb={50}>
         Welcome Back!
       </Title>
