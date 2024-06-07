@@ -71,7 +71,7 @@ export default function ExpenseCard(Props: ExpenseCardProps) {
     <Card withBorder padding="md" mih={210}>
       <Group justify="space-between">
         <Text fz="lg" fw={700}>
-          {name} {}
+          {name}
         </Text>
 
         <Menu
