@@ -68,6 +68,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({
         }
         setLoading(false);
       } catch (err: any) {
+        setLoading(false);
         setError(err);
       }
     },
