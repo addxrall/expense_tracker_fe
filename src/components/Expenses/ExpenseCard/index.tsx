@@ -1,7 +1,8 @@
-import { Card, Text, Group, Badge } from "@mantine/core";
+import { Card, Text, Group, Badge, NumberFormatter } from "@mantine/core";
+import { ID } from "../../../api/interfaces";
 
 interface ExpenseCardProps {
-  id: string;
+  id: ID;
   name: string;
   description: string;
   amount: number;
@@ -10,6 +11,7 @@ interface ExpenseCardProps {
 
 export default function ExpenseCard(Props: ExpenseCardProps) {
   const { name, amount, description, tags } = Props;
+
   const expenseTags = tags.map((badge) => (
     <Badge variant="light" key={badge}>
       {badge}
@@ -17,16 +19,22 @@ export default function ExpenseCard(Props: ExpenseCardProps) {
   ));
 
   return (
-    <Card withBorder padding="lg">
+    <Card withBorder padding="lg" mih={200}>
       <Group justify="space-between">
         <Text fz="lg" fw={700}>
           {name}
         </Text>
         <Group gap={5}>
           <Text fz="xs" c="dimmed">
-            Expense amount
+            Amount
           </Text>
-          <Badge>{amount}</Badge>
+          <Badge>
+            <NumberFormatter
+              thousandSeparator="."
+              decimalSeparator=","
+              value={amount}
+            />
+          </Badge>
         </Group>
       </Group>
       <Text mt="sm" mb="md">

@@ -22,7 +22,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <BrowserRouter>
         <AuthProvider>
           <MantineProvider theme={theme} defaultColorScheme="dark">
-            <Notifications position="bottom-center" zIndex={1000} />
+            <Notifications position="bottom-right" zIndex={1000} />
             <App />
           </MantineProvider>
         </AuthProvider>

@@ -1,19 +1,18 @@
 import { useState } from "react";
 import {
   Group,
-  Code,
   Text,
   Button,
   Divider,
   ActionIcon,
   Tooltip,
+  Stack,
 } from "@mantine/core";
 import {
   IconBellRinging,
   IconFingerprint,
   IconReceipt2,
   IconLogout,
-  IconAt,
   IconHome,
 } from "@tabler/icons-react";
 import classes from "./navbar.module.scss";
@@ -33,11 +32,7 @@ export function Navbar() {
   const [active, setActive] = useState(location.pathname);
   const [opened, { open, close }] = useDisclosure(false);
   const navigate = useNavigate();
-  const { data } = useGetCurrentUser();
-  const currentUser = data?.currentUser;
-
-  const email = currentUser?.email;
-  const username = currentUser?.username;
+  const { data, username, email } = useGetCurrentUser();
 
   const links = router.map((item: any) => (
     <span
@@ -62,31 +57,26 @@ export function Navbar() {
   return (
     <nav className={classes.navbar}>
       <div className={classes.navbarMain}>
-        <Group className={classes.header} justify="space-between">
-          <h3>
-            <Text
-              component="span"
-              variant="gradient"
-              gradient={{ from: "teal", to: "cyan" }}
-              inherit
-              fw={700}
-            >
-              Expense Guardian
-            </Text>
-          </h3>
-          <Code fw={700}>v0.0.1</Code>
+        <Group className={classes.header} justify="center-between">
+          <Text
+            component="span"
+            variant="gradient"
+            gradient={{ from: "teal", to: "cyan" }}
+            inherit
+            fw={700}
+            fz={28}
+          >
+            Expense Guardian
+          </Text>
         </Group>
-        <Group wrap="nowrap" mb={25} justify="center">
-          <div>
-            <Text fz="lg" fw={500} ta="center">
-              {username}
-            </Text>
-            <Group wrap="nowrap" gap={10} mt={3}>
-              <IconAt stroke={1} size={15} />
-              <Text c="dimmed">{email}</Text>
-            </Group>
-          </div>
-        </Group>
+        <Stack mb={25} justify="center" align="center" gap={0}>
+          <Text fz="lg" fw={500} ta="center">
+            {username}
+          </Text>
+          <Group wrap="nowrap" gap={10} mt={3}>
+            <Text c="dimmed">{email}</Text>
+          </Group>
+        </Stack>
         <Divider mb={25} />
         {links}
       </div>
