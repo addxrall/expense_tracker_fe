@@ -3,7 +3,6 @@ import {
   CreateExpenseData,
   CreateExpenseInput,
   DeleteExpenseMutation,
-  ID,
 } from "../interfaces";
 
 export const CREATE_EXPENSE = gql`

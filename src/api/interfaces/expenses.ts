@@ -6,6 +6,8 @@ export interface UserExpense {
   description: string;
   amount: number;
   tags: string[];
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface GetExpensesByUserIdData {

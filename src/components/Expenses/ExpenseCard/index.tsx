@@ -13,6 +13,7 @@ import { GetExpensesByUserIdData, ID } from "../../../api/interfaces";
 import { useDeleteExpenseMutation } from "../../../api/mutations";
 import { notifications } from "@mantine/notifications";
 import { OperationVariables, ApolloQueryResult } from "@apollo/client";
+import moment from "moment";
 
 interface ExpenseCardProps {
   id: ID;
@@ -20,13 +21,14 @@ interface ExpenseCardProps {
   description: string;
   amount: number;
   tags: string[];
+  updatedAt: string;
   refetch: (
     variables?: Partial<OperationVariables> | undefined
   ) => Promise<ApolloQueryResult<GetExpensesByUserIdData>>;
 }
 
 export default function ExpenseCard(Props: ExpenseCardProps) {
-  const { id, name, amount, description, tags, refetch } = Props;
+  const { id, name, amount, description, tags, updatedAt, refetch } = Props;
   const [deleteExpense] = useDeleteExpenseMutation();
 
   const handleDeleteExpense = async (id: ID) => {
@@ -66,10 +68,10 @@ export default function ExpenseCard(Props: ExpenseCardProps) {
   ));
 
   return (
-    <Card withBorder padding="md" mih={200}>
+    <Card withBorder padding="md" mih={210}>
       <Group justify="space-between">
         <Text fz="lg" fw={700}>
-          {name}
+          {name} {}
         </Text>
 
         <Menu
@@ -111,10 +113,14 @@ export default function ExpenseCard(Props: ExpenseCardProps) {
         {description}
       </Text>
 
-      <Card.Section p="md">
-        <Group gap={7} mt={5}>
-          {expenseTags}
-        </Group>
+      <Card.Section px="md">
+        <Group gap={7}>{expenseTags}</Group>
+      </Card.Section>
+
+      <Card.Section p="md" pos="absolute" bottom={10} right={10}>
+        <Text fz={14} c="dimmed">
+          {moment(updatedAt).fromNow()}
+        </Text>
       </Card.Section>
     </Card>
   );

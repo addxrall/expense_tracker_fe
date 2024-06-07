@@ -9,6 +9,8 @@ export const GET_EXPENSES_BY_USER_ID = gql`
       id
       name
       tags
+      updatedAt
+      createdAt
     }
   }
 `;
