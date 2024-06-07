@@ -59,7 +59,7 @@ const AddExpenseModal = ({ opened, close, refetch }: LogoutModalProps) => {
       event.preventDefault();
       form.onSubmit(async (values: CreateExpense) => {
         try {
-          await createExpense({
+          const { data } = await createExpense({
             variables: {
               input: values,
             },
@@ -68,7 +68,7 @@ const AddExpenseModal = ({ opened, close, refetch }: LogoutModalProps) => {
           form.reset();
           close();
           notifications.show({
-            title: "Expense",
+            title: data?.createExpense.name,
             message: "Created Successfully",
             autoClose: 4000,
             withCloseButton: true,
