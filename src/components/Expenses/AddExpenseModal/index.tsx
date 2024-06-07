@@ -77,7 +77,15 @@ const AddExpenseModal = ({ opened, close, refetch }: LogoutModalProps) => {
             radius: "sm",
           });
         } catch (err: any) {
-          throw new Error(err);
+          notifications.show({
+            title: "Error",
+            message: `${err}`,
+            autoClose: 5000,
+            withCloseButton: true,
+            withBorder: true,
+            color: "red",
+            radius: "sm",
+          });
         }
       })();
     },

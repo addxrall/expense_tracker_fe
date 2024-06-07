@@ -1,3 +1,4 @@
+import { Expense } from "./../../../../expense_tracker_api/src/graphql/types";
 import { ID } from "./auth";
 export interface UserExpense {
   id: ID;
@@ -25,4 +26,11 @@ export interface CreateExpenseData {
 
 export interface CreateExpenseInput {
   input: CreateExpense;
+}
+
+export interface DeleteExpenseMutation {
+  deleteExpense: {
+    message: string;
+    expense: Expense;
+  };
 }

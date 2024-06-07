@@ -52,7 +52,7 @@ const Expenses = () => {
             userExpenses.map((item: UserExpense) => {
               return (
                 <Grid.Col span={4} key={item.id}>
-                  <ExpenseCard {...item} />
+                  <ExpenseCard {...item} refetch={refetch} />
                 </Grid.Col>
               );
             })}
