@@ -1,5 +1,3 @@
-import { updateExpense } from "./../../../../expense_tracker_api/src/graphql/services/expense.service";
-import { Expense } from "./../../../../expense_tracker_api/src/graphql/types";
 import { ID } from "./auth";
 export interface UserExpense {
   id: ID;
@@ -34,7 +32,7 @@ export interface CreateExpenseInput {
 export interface DeleteExpenseMutation {
   deleteExpense: {
     message: string;
-    expense: Expense;
+    expense: UserExpense;
   };
 }
 

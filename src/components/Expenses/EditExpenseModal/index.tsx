@@ -12,7 +12,6 @@ import {
   CreateExpense,
   GetExpensesByUserIdData,
   ID,
-  UserExpense,
 } from "../../../api/interfaces";
 import { OperationVariables, ApolloQueryResult } from "@apollo/client";
 import { useCallback } from "react";
