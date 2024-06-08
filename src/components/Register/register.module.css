@@ -17,18 +17,3 @@
     max-width: 100%;
   }
 }
-
-.title {
-  font-family: Greycliff CF, var(--mantine-font-family);
-  font-size: rem(62px);
-  font-weight: 900;
-  line-height: 1.1;
-  margin: 0;
-  padding: 0;
-  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
-
-  @media (max-width: 600px) {
-    font-size: rem(42px);
-    line-height: 1.2;
-  }
-}

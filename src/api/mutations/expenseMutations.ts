@@ -3,6 +3,8 @@ import {
   CreateExpenseData,
   CreateExpenseInput,
   DeleteExpenseMutation,
+  UpdateExpenseInput,
+  UpdateExpenseMutation,
 } from "../interfaces";
 
 export const CREATE_EXPENSE = gql`
@@ -28,8 +30,19 @@ export const DELETE_EXPENSE = gql`
   }
 `;
 
+export const UPDATE_EXPENSE = gql`
+  mutation Mutation($input: UpdateExpenseInput!, $expenseId: String!) {
+    updateExpense(input: $input, expenseId: $expenseId) {
+      name
+    }
+  }
+`;
+
 export const useCreateExpenseMutation = () =>
   useMutation<CreateExpenseData, CreateExpenseInput>(CREATE_EXPENSE);
 
 export const useDeleteExpenseMutation = () =>
   useMutation<DeleteExpenseMutation>(DELETE_EXPENSE);
+
+export const useUpdateExpenseMutation = () =>
+  useMutation<UpdateExpenseMutation, UpdateExpenseInput>(UPDATE_EXPENSE);

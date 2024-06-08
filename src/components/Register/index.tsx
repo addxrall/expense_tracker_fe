@@ -32,18 +32,18 @@ export function Register() {
   return (
     <div className={classes.wrapper}>
       <Paper className={classes.form} radius={0} p={30}>
-        <Title order={2} className={classes.title} ta="center" mt="md" mb={50}>
-          <h1 className={classes.title}>
-            {" "}
-            <Text
-              component="span"
-              variant="gradient"
-              gradient={{ from: "teal", to: "cyan" }}
-              inherit
-            >
-              Expense Guardian
-            </Text>{" "}
-          </h1>
+        <Text
+          component="h1"
+          fz={50}
+          fw={900}
+          variant="gradient"
+          gradient={{ from: "teal", to: "cyan" }}
+          inherit
+          ta="center"
+        >
+          Expense Guardian
+        </Text>
+        <Title order={2} ta="center" mt="md" mb={50}>
           Register Account
         </Title>
         <form
