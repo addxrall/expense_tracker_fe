@@ -5,8 +5,7 @@ import RemoveAccountModal from "./RemoveAccountModal";
 
 const Account = () => {
   const [opened, { open, close }] = useDisclosure(false);
-  const { data } = useGetCurrentUser();
-  const userId = data?.currentUser.userId;
+  const { userId } = useGetCurrentUser();
 
   return (
     <>
