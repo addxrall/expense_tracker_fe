@@ -5,6 +5,7 @@ import "./index.css";
 import { MantineProvider, createTheme } from "@mantine/core";
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
+import "@mantine/charts/styles.css";
 import { ApolloProvider } from "@apollo/client";
 import { AuthProvider } from "./utils/AuthContext/AuthContext.tsx";
 import { BrowserRouter } from "react-router-dom";
@@ -28,5 +29,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         </AuthProvider>
       </BrowserRouter>
     </ApolloProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

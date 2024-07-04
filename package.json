@@ -11,16 +11,18 @@
   },
   "dependencies": {
     "@apollo/client": "^3.8.6",
-    "@mantine/core": "^7.10.1",
-    "@mantine/form": "^7.10.1",
-    "@mantine/hooks": "^7.10.1",
-    "@mantine/notifications": "^7.10.1",
+    "@mantine/charts": "^7.11.1",
+    "@mantine/core": "^7.11.1",
+    "@mantine/form": "^7.11.1",
+    "@mantine/hooks": "^7.11.1",
+    "@mantine/notifications": "^7.11.1",
     "@tabler/icons-react": "^2.40.0",
     "graphql": "^16.8.1",
     "moment": "^2.30.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.18.0",
+    "recharts": "2",
     "sass": "^1.77.4"
   },
   "devDependencies": {

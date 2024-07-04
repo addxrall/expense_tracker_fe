@@ -5,11 +5,8 @@ import { ReactNode } from "react";
 const AnonymousRoute = ({ children }: { children: ReactNode }) => {
   const { authenticated, loading } = useAuth();
 
-  return authenticated && !loading ? (
-    <Navigate to="/" replace={true} />
-  ) : (
-    children
-  );
+  if (authenticated && !loading) return <Navigate to="/" replace={true} />;
+  return children;
 };
 
 export default AnonymousRoute;
